@@ -1,17 +1,12 @@
 {
-	"compilerOptions": {
-		"target": "es6",
-		"moduleResolution": "node",
-		"skipLibCheck": true,
-		"declaration": true,
-		"strict": true,
-		"pretty": true,
-		"removeComments": true
-	},
-	"include": [
-		"src/**/*.js",
-		"src/**/*.jsx",
-		"src/**/*.ts",
-		"src/**/*.tsx"
-	]
+  "compilerOptions": {
+    "target": "es6",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "declaration": true,
+    "strict": true,
+    "pretty": true,
+    "removeComments": true
+  },
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
 }

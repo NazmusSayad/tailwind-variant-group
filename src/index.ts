@@ -1,14 +1,14 @@
-import cn, { tailwindVariantRegex } from 'get-classnames'
+const tailwindVariantRegex = /([a-z\-0-9:]+:)\((.*?)\)/gim
 
 const tailwindGroup = (code: string) => {
-  const variantGroupMatches = [...code.matchAll(tailwindVariantRegex)]
-
-  variantGroupMatches.forEach(([matchStr, key, value]) => {
-    const classNames = cn.prefix(key, value)
-    code = code.replace(matchStr, classNames)
+  return code.replace(tailwindVariantRegex, (matched) => {
+    const [, key, value] = matched.match(/(.*)\((.*)\)/)!
+    return value
+      .split(' ')
+      .filter((v) => v.trim())
+      .map((v) => key + v.trim())
+      .join(' ')
   })
-
-  return code
 }
 
 export default tailwindGroup

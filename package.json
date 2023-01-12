@@ -10,13 +10,10 @@
       "types": "./dist-cjs/index.d.cts"
     }
   },
-  "peerDependencies": {
-    "get-classnames": "*"
-  },
   "main": "./dist-cjs/index.cjs",
   "module": "./dist-mjs/index.mjs",
   "name": "tailwind-variant-group",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NazmusSayad/tailwind-variant-group.git"
