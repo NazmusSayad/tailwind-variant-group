@@ -1,13 +1,9 @@
-const tailwindVariantRegex = /([a-z\-0-9:]+:)\((.*?)\)/gim
+import cn, { tailwindVariantRegex } from 'get-classnames'
 
 const tailwindGroup = (code: string) => {
   return code.replace(tailwindVariantRegex, (matched) => {
     const [, key, value] = matched.match(/(.*)\((.*)\)/)!
-    return value
-      .split(' ')
-      .filter((v) => v.trim())
-      .map((v) => key + v.trim())
-      .join(' ')
+    return cn.prefix(key, value)
   })
 }
 

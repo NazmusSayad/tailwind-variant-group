@@ -25,6 +25,11 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
+class-function@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/class-function/-/class-function-1.0.1.tgz#93042f5bb24b83eb479e06f7c3a1a03d5321ff71"
+  integrity sha512-cpgHTOG3jRQzg3y9EyR1jnQGkGc2UiZRmkWs7Vs3ObGveQqSdDLK38zmFHsN6jY+J71+R7/wEDnTjrh4BuQeeA==
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -39,6 +44,13 @@ function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+
+get-classnames@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/get-classnames/-/get-classnames-1.0.8.tgz#ada0dc4fbf4fca1d7673fc6d7d1180ac31ee95b4"
+  integrity sha512-ECIkbyDO5iVC0NPbCVnjDMwxq/oV14Cmo0kTQRbaUS0az6jXBEjJCtECX5+g+J9xttidRxSs6wtYJCJXYmGD2w==
+  dependencies:
+    class-function "^1.0.1"
 
 glob@^7.0.0:
   version "7.2.3"
