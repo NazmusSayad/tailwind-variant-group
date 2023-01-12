@@ -16,7 +16,7 @@
   "main": "./dist-cjs/index.cjs",
   "module": "./dist-mjs/index.mjs",
   "name": "tailwind-variant-group",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NazmusSayad/tailwind-variant-group.git"

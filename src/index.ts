@@ -1,12 +1,11 @@
-import cn from 'get-classnames'
+import cn, { tailwindVariantRegex } from 'get-classnames'
 
 const tailwindGroup = (code: string) => {
-  const variantGroupsRegex = /([a-z\-0-9:]+:)\((.*?)\)/g
-  const variantGroupMatches = [...code.matchAll(variantGroupsRegex)]
+  const variantGroupMatches = [...code.matchAll(tailwindVariantRegex)]
 
-  variantGroupMatches.forEach(([matchStr, variants, classes]) => {
-    const parsedClasses = cn.prefix(variants, classes)
-    code = code.replace(matchStr, parsedClasses)
+  variantGroupMatches.forEach(([matchStr, key, value]) => {
+    const classNames = cn.prefix(key, value)
+    code = code.replace(matchStr, classNames)
   })
 
   return code
