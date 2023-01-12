@@ -1,0 +1,37 @@
+{
+  "name": "tailwind-group",
+  "version": "1.0.0",
+  "main": "./dist-cjs/index.cjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm-ez dev",
+    "build": "npm-ez build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-ez": "^2.0.1",
+    "typescript": "^4.9.4"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist-cjs/index.cjs",
+      "import": "./dist-mjs/index.mjs",
+      "types": "./dist-cjs/index.d.cts"
+    }
+  },
+  "module": "./dist-mjs/index.mjs",
+  "dependencies": {
+    "tailwind-group-variant": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NazmusSayad/tailwind-group.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NazmusSayad/tailwind-group/issues"
+  },
+  "homepage": "https://github.com/NazmusSayad/tailwind-group#readme",
+  "description": ""
+}

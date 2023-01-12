@@ -1,0 +1,5 @@
+# Added by npm-ez
+node_modules
+dist
+dist-cjs
+dist-mjs
