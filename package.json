@@ -8,12 +8,23 @@
       "require": "./dist-cjs/index.cjs",
       "import": "./dist-mjs/index.mjs",
       "types": "./dist-cjs/index.d.cts"
+    },
+    "./className": {
+      "require": "./dist-cjs/className.cjs",
+      "import": "./dist-mjs/className.mjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "className": [
+        "./dist-cjs/className.d.cts"
+      ]
     }
   },
   "main": "./dist-cjs/index.cjs",
   "module": "./dist-mjs/index.mjs",
   "name": "tailwind-variant-group",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NazmusSayad/tailwind-variant-group.git"
