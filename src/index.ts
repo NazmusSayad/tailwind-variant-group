@@ -20,4 +20,4 @@ function tw(...args: string[]) {
 }
 
 export default tw
-export { transform  , tw }
+export { transform, tw }
