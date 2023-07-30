@@ -25,11 +25,6 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-class-function@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/class-function/-/class-function-1.0.1.tgz#93042f5bb24b83eb479e06f7c3a1a03d5321ff71"
-  integrity sha512-cpgHTOG3jRQzg3y9EyR1jnQGkGc2UiZRmkWs7Vs3ObGveQqSdDLK38zmFHsN6jY+J71+R7/wEDnTjrh4BuQeeA==
-
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -44,13 +39,6 @@ function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
-
-get-classnames@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/get-classnames/-/get-classnames-1.0.8.tgz#ada0dc4fbf4fca1d7673fc6d7d1180ac31ee95b4"
-  integrity sha512-ECIkbyDO5iVC0NPbCVnjDMwxq/oV14Cmo0kTQRbaUS0az6jXBEjJCtECX5+g+J9xttidRxSs6wtYJCJXYmGD2w==
-  dependencies:
-    class-function "^1.0.1"
 
 glob@^7.0.0:
   version "7.2.3"
@@ -108,10 +96,10 @@ node-ls-files@^0.0.3:
   resolved "https://registry.yarnpkg.com/node-ls-files/-/node-ls-files-0.0.3.tgz#37e1158892521fadfb9cfa7570fb2976d5c9fece"
   integrity sha512-OhZBvqbaSdZmAWAHX5xPHWrGep2Q0XDy6Kt3DY0LSWwEoiImWT41zW1oXwlIbQvJHrb3qO3itZRK0zhogLKPqA==
 
-npm-ez@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/npm-ez/-/npm-ez-2.0.1.tgz#f289881773de28daefe846b48e87acdb13111bfb"
-  integrity sha512-vgtyoTfovr9qkBZZTu48cCLh/6dFwgDqgKeyIYGtHJW9ITwnEgq4vfEtF1JYXyU8W1WONlcscLdDAJmwckKxsA==
+npm-ez@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/npm-ez/-/npm-ez-2.0.6.tgz#02f5e5f7b50394bfad2df24b6493c9323cd77adf"
+  integrity sha512-soFh+X5IsxIGtfEJVacSImTF/5W3YX6axf2EUhS0btw9EoX3Y4me5wxDJ7hA5T/R0ZJ7YJlPq/2IPK6XAaX4hA==
   dependencies:
     "@babel/parser" "^7.20.7"
     ansi-colors "^4.1.3"
@@ -165,10 +153,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-typescript@^4.9.4:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
-  integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
+typescript@^5.1.6:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
+  integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
 
 wrappy@1:
   version "1.0.2"

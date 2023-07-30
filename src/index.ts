@@ -1,10 +1,23 @@
-import cn, { tailwindVariantRegex } from 'get-classnames'
+// const tailwindVariantRegex = /(([a-z\-0-9]+|\[.*\]))\:\(.*?\)/gim
+const tailwindVariantRegex = /([a-z\-0-9]+)\:\(.*?\)/gim
 
-const tailwindGroup = (code: string) => {
-  return code.replace(tailwindVariantRegex, (matched) => {
-    const [, key, value] = matched.match(/(.*)\((.*)\)/)!
-    return cn.prefix(key, value)
-  })
+function prefixed(prefix: string, ...args: string[]) {
+  return args.map((a) => prefix + a).join(' ')
 }
 
-export default tailwindGroup
+function extractVariant(code: string) {
+  const { prefix, value } = code.match(/(?<prefix>.*)\((?<value>.*)\)/)!.groups!
+  const classes = prefixed(prefix, ...value.split(/ +/))
+  return classes
+}
+
+const transform = (code: string) => {
+  return code.replace(tailwindVariantRegex, extractVariant)
+}
+
+function tw(...args: string[]) {
+  return args.map(transform).join(' ')
+}
+
+export default tw
+export { transform  , tw }

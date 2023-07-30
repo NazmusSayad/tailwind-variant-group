@@ -8,29 +8,24 @@ Stop writting the same code again and again.
 
 ---
 
-## Example
-
 ## Installation
 
 - with npm
 
 ```shell
-npm i get-classnames
-npm i -D tailwind-variant-group
+npm i tailwind-variant-group
 ```
 
 - with yarn
 
 ```shell
-yarn add get-classnames
-yarn add -D tailwind-variant-group
+yarn add tailwind-variant-group
 ```
 
 - with pnpm
 
 ```shell
-pnpm add get-classnames
-pnpm add -D tailwind-variant-group
+pnpm add tailwind-variant-group
 ```
 
 <br/> <br/>
@@ -44,7 +39,7 @@ pnpm add -D tailwind-variant-group
 module.exports = {
   content: {
     files: ['./src/**/*.{jsx,tsx}'],
-    transform: require('tailwind-variant-group').default,
+    transform: require('tailwind-variant-group').transform,
   },
 }
 ```
@@ -52,15 +47,13 @@ module.exports = {
 `/* Component.js */`
 
 ```js
-import cn from 'get-classnames'
-/* or */
-import cn from 'tailwind-variant-group/className'
+import tw from 'tailwind-variant-group'
 
 const Component = () => {
   return (
     <button
-      className={cn.tw(
-        'hover:(bg-black text-black)',
+      className={tw(
+        'bg-red hover:(bg-black text-black)',
         true
           ? 'sm:(hidden transition-all)'
           : 'md:(flex grid flex-wrap flex-nowrap)'

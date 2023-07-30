@@ -1,30 +1,10 @@
 {
+  "name": "tailwind-variant-group",
+  "version": "2.0.0",
   "scripts": {
     "dev": "npm-ez dev",
     "build": "npm-ez build"
   },
-  "exports": {
-    ".": {
-      "require": "./dist-cjs/index.cjs",
-      "import": "./dist-mjs/index.mjs",
-      "types": "./dist-cjs/index.d.cts"
-    },
-    "./className": {
-      "require": "./dist-cjs/className.cjs",
-      "import": "./dist-mjs/className.mjs"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "className": [
-        "./dist-cjs/className.d.cts"
-      ]
-    }
-  },
-  "main": "./dist-cjs/index.cjs",
-  "module": "./dist-mjs/index.mjs",
-  "name": "tailwind-variant-group",
-  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NazmusSayad/tailwind-variant-group.git"
@@ -36,13 +16,17 @@
     "url": "https://github.com/NazmusSayad/tailwind-variant-group/issues"
   },
   "homepage": "https://github.com/NazmusSayad/tailwind-variant-group#readme",
-  "description": "",
-  "peerDependencies": {
-    "get-classnames": "*"
-  },
   "devDependencies": {
-    "get-classnames": "latest",
-    "npm-ez": "^2.0.1",
+    "npm-ez": "^2.0.6",
     "typescript": "^4.9.4"
+  },
+  "main": "./dist-cjs/index.cjs",
+  "module": "./dist-mjs/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist-cjs/index.cjs",
+      "import": "./dist-mjs/index.mjs",
+      "types": "./dist-mjs/index.d.mts"
+    }
   }
 }
