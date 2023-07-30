@@ -1,5 +1,4 @@
-// const tailwindVariantRegex = /(([a-z\-0-9]+|\[.*\]))\:\(.*?\)/gim
-const tailwindVariantRegex = /([a-z\-0-9]+)\:\(.*?\)/gim
+const tailwindVariantRegex = /(([a-z\-0-9]+|\[.*\]))\:\(.*?\)/gim
 
 function prefixed(prefix: string, ...args: string[]) {
   return args.map((a) => prefix + a).join(' ')
