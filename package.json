@@ -1,6 +1,6 @@
 {
   "name": "tailwind-variant-group",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "scripts": {
     "dev": "npmize dev",
     "build": "npmize build"
