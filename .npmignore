@@ -1,8 +1,6 @@
-# Added by npm-ez
+# npmize
 *
 !lib/**
 !dist/**
-!dist-cjs/**
-!dist-mjs/**
 !package.json
 !README.md

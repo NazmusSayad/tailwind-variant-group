@@ -1,5 +1,4 @@
-# Added by npm-ez
+# npmize
 node_modules
 dist
-dist-cjs
-dist-mjs
+.npmize
