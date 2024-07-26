@@ -10,5 +10,6 @@
     "removeComments": true,
     "inlineSourceMap": false
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": ["**/*__lab.ts"]
 }

@@ -1,9 +1,10 @@
 {
   "name": "tailwind-variant-group",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "scripts": {
     "dev": "npmize dev",
-    "build": "npmize build"
+    "build": "npmize build",
+    "lab": "nw ./src/__lab.ts"
   },
   "repository": {
     "type": "git",

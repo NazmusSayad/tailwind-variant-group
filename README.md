@@ -52,11 +52,12 @@ import tw from 'tailwind-variant-group'
 const Component = () => {
   return (
     <button
-      className={tw`bg-red hover:{bg-black text-black} ${
+      className={tw(
+        'bg-red hover:{bg-black text-black}',
         true
           ? ['sm:{hidden transition-all}', 'lg:{overflow}']
           : 'md:{flex grid flex-wrap flex-nowrap}'
-      }`}
+      )}
     >
       Click me
     </button>

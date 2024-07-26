@@ -13,17 +13,12 @@ const transform = (code: string) => {
   return code.replace(tailwindVariantRegex, extractVariant)
 }
 
-function tw(strings: TemplateStringsArray, ...args: NestedArray) {
+function tw(...args: NestedArray) {
   const flattedArgs = args.map((arg) =>
     Array.isArray(arg) ? (arg as any[]).flat(Infinity).join(' ') : arg
   )
 
-  const combined = strings.reduce(
-    (acc, str, i) => acc + str + (flattedArgs[i] || ''),
-    ''
-  )
-
-  return transform(combined)
+  return transform(flattedArgs.join(' '))
 }
 
 export default tw
