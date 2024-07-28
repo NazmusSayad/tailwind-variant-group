@@ -8,8 +8,9 @@
     "strict": true,
     "pretty": true,
     "removeComments": true,
-    "inlineSourceMap": false
+    "inlineSourceMap": false,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["./src"],
-  "exclude": ["**/*__lab.ts"]
+  "exclude": ["node_modules", "**/*.test.ts", "**/**__lab.ts"]
 }

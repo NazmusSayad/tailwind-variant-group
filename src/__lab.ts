@@ -1,16 +1,8 @@
+console.clear()
 import tw from '.'
 
-const result = tw(
-  'bg-red hover:{bg-black text-black}',
-
-  true && 'cs-true',
-  false && 'cs-false',
-
-  new Blob() || 3,
-
-  true
-    ? ['sm:{hidden transition-all}', 'lg:{overflow}']
-    : 'md:{flex grid flex-wrap flex-nowrap}'
+console.log(
+  tw(
+    "group/data-[custom]:md:focus-[visible]:hover:lg:after:{content-[''] w-[20px] h-[20px]}"
+  )
 )
-
-console.log(result)

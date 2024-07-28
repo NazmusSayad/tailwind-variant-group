@@ -1,12 +1,12 @@
-const tailwindVariantRegex = /(([a-z\-0-9]+|\[.*\]))\:\{(.*?)\}/gim
-
-function prefixed(prefix: string, ...args: string[]) {
-  return args.map((a) => prefix + a).join(' ')
-}
+const tailwindVariantRegex =
+  /((?:[\/\:\-\_a-z0-9]+|\[[\<\>\|\~\*\^\$\&\-\=\_a-z0-9]+\])+):\{(.*)\}/gim
 
 function extractVariant(code: string) {
   const { prefix, value } = code.match(/(?<prefix>.*)\{(?<value>.*)\}/)!.groups!
-  return prefixed(prefix, ...value.split(/ +/))
+  return value
+    .split(/ +/)
+    .map((v) => prefix + v)
+    .join(' ')
 }
 
 const transform = (code: string) => {
