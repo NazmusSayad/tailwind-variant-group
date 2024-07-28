@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "lib": ["ES2019", "dom"],
-    "target": "ES2019",
+    "lib": ["ES6", "dom"],
+    "target": "ES6",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "declaration": true,

@@ -1,19 +1,20 @@
 const tailwindVariantRegex =
-  /((?:[\/\:\-\_a-z0-9]+|\[[\<\>\|\~\*\^\$\&\-\=\_a-z0-9]+\])+):\{(.*)\}/gim
+  /([\/\:\-\_a-z0-9]+|\[[\<\>\|\~\*\^\$\&\-\=\_a-z0-9]+\])+:\{.*\}/gim
 
 function extractVariant(code: string) {
-  const { prefix, value } = code.match(/(?<prefix>.*)\{(?<value>.*)\}/)!.groups!
+  const [, prefix = '', value = ''] = code.match(/(.*)\{(.*)\}/)!
+
   return value
     .split(/ +/)
     .map((v) => prefix + v)
     .join(' ')
 }
 
-const transform = (code: string) => {
+export function transform(code: string) {
   return code.replace(tailwindVariantRegex, extractVariant)
 }
 
-function tw(...args: NestedArray) {
+export function tw(...args: NestedArray) {
   const flatted = args.flat(Infinity)
   const filteredArgs = flatted.filter((a) => {
     return (
@@ -28,6 +29,4 @@ function tw(...args: NestedArray) {
 }
 
 export default tw
-export { transform, tw }
-
 type NestedArray = (unknown | NestedArray)[]
