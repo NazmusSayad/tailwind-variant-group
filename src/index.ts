@@ -14,13 +14,20 @@ const transform = (code: string) => {
 }
 
 function tw(...args: NestedArray) {
-  const flattedArgs = args.map((arg) =>
-    Array.isArray(arg) ? (arg as any[]).flat(Infinity).join(' ') : arg
-  )
+  const flatted = args.flat(Infinity)
+  const filteredArgs = flatted.filter((a) => {
+    return (
+      typeof a === 'string' ||
+      typeof a === 'number' ||
+      a instanceof String ||
+      a instanceof Number
+    )
+  })
 
-  return transform(flattedArgs.join(' '))
+  return transform(filteredArgs.join(' '))
 }
 
 export default tw
 export { transform, tw }
-type NestedArray = (string | number | NestedArray)[]
+
+type NestedArray = (unknown | NestedArray)[]
