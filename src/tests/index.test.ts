@@ -1,4 +1,4 @@
-import { tw } from '.'
+import { tw } from '..'
 
 test('Test Level: 0', () => {
   expect(tw('lg:{overflow}')).toBe('lg:overflow')
@@ -24,6 +24,7 @@ test('Test Level: 0', () => {
   expect(tw('hidden xl:{order-last}')).toBe('hidden xl:order-last')
   expect(tw('lg:{order-1 order-2}')).toBe('lg:order-1 lg:order-2')
   expect(tw('sm:{justify-start}')).toBe('sm:justify-start')
+  expect(tw('md:{abc} lg:{adfasdf}')).toBe('md:abc lg:adfasdf')
   expect(tw('hidden lg:{flex-grow flex-shrink}')).toBe(
     'hidden lg:flex-grow lg:flex-shrink'
   )
@@ -491,8 +492,8 @@ test('Test Level: 6', () => {
   expect(tw('[class|=btn]:hover:{bg-green-600 text-white}')).toBe(
     '[class|=btn]:hover:bg-green-600 [class|=btn]:hover:text-white'
   )
-  expect(tw('[class*=sidebar]:hover:{[&>div]:border-2}')).toBe(
-    '[class*=sidebar]:hover:[&>div]:border-2'
+  expect(tw('[class*=sidebar]:hover:{border-2}')).toBe(
+    '[class*=sidebar]:hover:border-2'
   )
   expect(
     tw('[data-type=button]:focus-visible:{[&>span]:text-yellow-500}')
@@ -506,8 +507,8 @@ test('Test Level: 6', () => {
   expect(tw('[class~=section]:focus-visible:{[&>h1]:text-xl}')).toBe(
     '[class~=section]:focus-visible:[&>h1]:text-xl'
   )
-  expect(tw('[data-custom]:hover:{[&>div]:border-dashed}')).toBe(
-    '[data-custom]:hover:[&>div]:border-dashed'
+  expect(tw('[data-custom]:hover:{border-dashed}')).toBe(
+    '[data-custom]:hover:border-dashed'
   )
   expect(tw('[data-state=open]:focus-visible:{text-blue-600}')).toBe(
     '[data-state=open]:focus-visible:text-blue-600'
@@ -541,5 +542,307 @@ test('Test Level: 6', () => {
   )
   expect(tw('[data-custom]:focus-visible:{border-[3px] border-dotted}')).toBe(
     '[data-custom]:focus-visible:border-[3px] [data-custom]:focus-visible:border-dotted'
+  )
+})
+
+test('Test Level: 7', () => {
+  expect(
+    tw('[class*=icon]:hover:{w-8 h-8} [class^=header]:{text-2xl font-bold}')
+  ).toBe(
+    '[class*=icon]:hover:w-8 [class*=icon]:hover:h-8 [class^=header]:text-2xl [class^=header]:font-bold'
+  )
+  expect(
+    tw(
+      '[data-test="value"]:hover:{bg-red-500 text-white} [class~="btn"]:focus:{border-2 border-blue-500}'
+    )
+  ).toBe(
+    '[data-test="value"]:hover:bg-red-500 [data-test="value"]:hover:text-white [class~="btn"]:focus:border-2 [class~="btn"]:focus:border-blue-500'
+  )
+  expect(
+    tw(
+      '[data-attr="value"]:{[&>span]:p-3} [class*="nav"]:active:{border-b-2 border-blue-500}'
+    )
+  ).toBe(
+    '[data-attr="value"]:[&>span]:p-3 [class*="nav"]:active:border-b-2 [class*="nav"]:active:border-blue-500'
+  )
+  expect(
+    tw(
+      '[data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200} [class|="btn"]:hover:{bg-green-600 text-white}'
+    )
+  ).toBe(
+    '[data-item="nav"]:focus-visible:[&>ul]:bg-blue-200 [class|="btn"]:hover:bg-green-600 [class|="btn"]:hover:text-white'
+  )
+  expect(
+    tw(
+      '[class^="header-"]:hover:{[&>&]:mt-5} [class|="icon"]:focus:{text-red-600 transform rotate-45}'
+    )
+  ).toBe(
+    '[class^="header-"]:hover:[&>&]:mt-5 [class|="icon"]:focus:text-red-600 [class|="icon"]:focus:transform [class|="icon"]:focus:rotate-45'
+  )
+  expect(
+    tw(
+      '[data-value="true"]:{bg-green-100 text-black} [class*=card]:hover:{[&>img]:rounded-full}'
+    )
+  ).toBe(
+    '[data-value="true"]:bg-green-100 [data-value="true"]:text-black [class*=card]:hover:[&>img]:rounded-full'
+  )
+  expect(
+    tw(
+      '[data-state="open"]:focus-visible:{[&>p]:text-blue-600} [class~="content"]:focus-visible:{[&>section]:border-t-2}'
+    )
+  ).toBe(
+    '[data-state="open"]:focus-visible:[&>p]:text-blue-600 [class~="content"]:focus-visible:[&>section]:border-t-2'
+  )
+  expect(
+    tw(
+      '[class*="sidebar"]:hover:{border-2} [data-action="submit"]:focus-visible:{[&>button] bg-gray-800}'
+    )
+  ).toBe(
+    '[class*="sidebar"]:hover:border-2 [data-action="submit"]:focus-visible:[&>button] [data-action="submit"]:focus-visible:bg-gray-800'
+  )
+  expect(
+    tw(
+      '[data-custom]:hover:{border-dashed} [data-test="value"]:{[class~="item"]:hover:bg-blue-500}'
+    )
+  ).toBe(
+    '[data-custom]:hover:border-dashed [data-test="value"]:[class~="item"]:hover:bg-blue-500'
+  )
+  expect(
+    tw(
+      '[class~="nav"]:hover:{[&>ul]:bg-yellow-200} [data-value="test"]:hover:{text-xl font-semibold}'
+    )
+  ).toBe(
+    '[class~="nav"]:hover:[&>ul]:bg-yellow-200 [data-value="test"]:hover:text-xl [data-value="test"]:hover:font-semibold'
+  )
+  expect(
+    tw(
+      '[data-attr="value"]:{[&>span]:p-3} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200}'
+    )
+  ).toBe(
+    '[data-attr="value"]:[&>span]:p-3 [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200'
+  )
+  expect(
+    tw(
+      '[data-test="value"]:hover:{bg-red-500 text-white} [class^="header-"]:focus-visible:{[&>h1]:text-3xl}'
+    )
+  ).toBe(
+    '[data-test="value"]:hover:bg-red-500 [data-test="value"]:hover:text-white [class^="header-"]:focus-visible:[&>h1]:text-3xl'
+  )
+  expect(
+    tw(
+      '[class|="btn"]:focus:{outline-none ring-2 ring-blue-400} [data-state="open"]:focus-visible:{[&>p]:text-blue-600}'
+    )
+  ).toBe(
+    '[class|="btn"]:focus:outline-none [class|="btn"]:focus:ring-2 [class|="btn"]:focus:ring-blue-400 [data-state="open"]:focus-visible:[&>p]:text-blue-600'
+  )
+  expect(
+    tw(
+      '[class*="btn"]:hover:{[&>span]:text-white} [data-value="test"]:{[class~="item"]:hover:bg-blue-500}'
+    )
+  ).toBe(
+    '[class*="btn"]:hover:[&>span]:text-white [data-value="test"]:[class~="item"]:hover:bg-blue-500'
+  )
+  expect(
+    tw(
+      '[data-action="submit"]:focus-visible:{[&>button]:bg-gray-800} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200}'
+    )
+  ).toBe(
+    '[data-action="submit"]:focus-visible:[&>button]:bg-gray-800 [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200'
+  )
+  expect(
+    tw(
+      '[class~="section"]:focus-visible:{[&>h1]:text-xl} [data-custom]:hover:{border-dashed}'
+    )
+  ).toBe(
+    '[class~="section"]:focus-visible:[&>h1]:text-xl [data-custom]:hover:border-dashed'
+  )
+  expect(
+    tw(
+      '[data-state="open"]:focus-visible:{[&>p]:text-blue-600} [class|="icon"]:hover:{text-red-600 transform rotate-45}'
+    )
+  ).toBe(
+    '[data-state="open"]:focus-visible:[&>p]:text-blue-600 [class|="icon"]:hover:text-red-600 [class|="icon"]:hover:transform [class|="icon"]:hover:rotate-45'
+  )
+  expect(
+    tw(
+      '[class*=card]:hover:{[&>img]:rounded-full} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200}'
+    )
+  ).toBe(
+    '[class*=card]:hover:[&>img]:rounded-full [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200'
+  )
+  expect(
+    tw(
+      '[data-test="value"]:{text-xl font-semibold} [class^="header-"]:focus-visible:{[&>h1]:text-3xl}'
+    )
+  ).toBe(
+    '[data-test="value"]:text-xl [data-test="value"]:font-semibold [class^="header-"]:focus-visible:[&>h1]:text-3xl'
+  )
+  expect(
+    tw(
+      '[class*="nav"]:active:{border-b-2 border-blue-500} [data-action="submit"]:focus-visible:{[&>button]:bg-gray-800}'
+    )
+  ).toBe(
+    '[class*="nav"]:active:border-b-2 [class*="nav"]:active:border-blue-500 [data-action="submit"]:focus-visible:[&>button]:bg-gray-800'
+  )
+  expect(
+    tw(
+      '[data-attr="value"]:{[&>span]:p-3} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200} [class|="btn"]:hover:{bg-green-600 text-white}'
+    )
+  ).toBe(
+    '[data-attr="value"]:[&>span]:p-3 [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200 [class|="btn"]:hover:bg-green-600 [class|="btn"]:hover:text-white'
+  )
+  expect(
+    tw(
+      '[class~="content"]:focus-visible:{[&>section]:border-t-2} [data-state="open"]:focus-visible:{[&>p]:text-blue-600}'
+    )
+  ).toBe(
+    '[class~="content"]:focus-visible:[&>section]:border-t-2 [data-state="open"]:focus-visible:[&>p]:text-blue-600'
+  )
+  expect(
+    tw(
+      '[data-test="value"]:{bg-red-500 text-white} [class^="header"]:hover:{text-2xl font-bold}'
+    )
+  ).toBe(
+    '[data-test="value"]:bg-red-500 [data-test="value"]:text-white [class^="header"]:hover:text-2xl [class^="header"]:hover:font-bold'
+  )
+  expect(
+    tw(
+      '[data-custom]:hover:{border-dashed} [data-test="value"]:{[class~="item"]:hover:bg-blue-500} [class*=icon]:focus:{w-8 h-8}'
+    )
+  ).toBe(
+    '[data-custom]:hover:border-dashed [data-test="value"]:[class~="item"]:hover:bg-blue-500 [class*=icon]:focus:w-8 [class*=icon]:focus:h-8'
+  )
+  expect(
+    tw(
+      '[class|="icon"]:hover:{text-red-600 transform rotate-45} [data-action="submit"]:focus-visible:{[&>button]:bg-gray-800}'
+    )
+  ).toBe(
+    '[class|="icon"]:hover:text-red-600 [class|="icon"]:hover:transform [class|="icon"]:hover:rotate-45 [data-action="submit"]:focus-visible:[&>button]:bg-gray-800'
+  )
+  expect(
+    tw(
+      '[data-value="true"]:{bg-green-100 text-black} [class*="card"]:hover:{[&>img]:rounded-full} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200}'
+    )
+  ).toBe(
+    '[data-value="true"]:bg-green-100 [data-value="true"]:text-black [class*="card"]:hover:[&>img]:rounded-full [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200'
+  )
+  expect(
+    tw(
+      '[class~="nav"]:focus-visible:{[&>ul]:bg-yellow-200} [data-test="value"]:hover:{text-xl font-semibold}'
+    )
+  ).toBe(
+    '[class~="nav"]:focus-visible:[&>ul]:bg-yellow-200 [data-test="value"]:hover:text-xl [data-test="value"]:hover:font-semibold'
+  )
+  expect(
+    tw(
+      '[class*="btn"]:hover:{[&>span]:text-white} [data-attr="value"]:{[class~="item"]:hover:bg-blue-500}'
+    )
+  ).toBe(
+    '[class*="btn"]:hover:[&>span]:text-white [data-attr="value"]:[class~="item"]:hover:bg-blue-500'
+  )
+  expect(
+    tw(
+      '[data-state="open"]:focus-visible:{[&>p]:text-blue-600} [class~="section"]:focus-visible:{[&>h1]:text-xl}'
+    )
+  ).toBe(
+    '[data-state="open"]:focus-visible:[&>p]:text-blue-600 [class~="section"]:focus-visible:[&>h1]:text-xl'
+  )
+  expect(
+    tw(
+      '[data-action="submit"]:focus-visible:{[&>button]:bg-gray-800} [class*=card]:hover:{[&>img]:rounded-full}'
+    )
+  ).toBe(
+    '[data-action="submit"]:focus-visible:[&>button]:bg-gray-800 [class*=card]:hover:[&>img]:rounded-full'
+  )
+  expect(
+    tw(
+      '[class~="content"]:focus-visible:{[&>section]:border-t-2} [class|="btn"]:hover:{bg-green-600 text-white}'
+    )
+  ).toBe(
+    '[class~="content"]:focus-visible:[&>section]:border-t-2 [class|="btn"]:hover:bg-green-600 [class|="btn"]:hover:text-white'
+  )
+  expect(
+    tw(
+      '[data-custom]:hover:{border-dashed} [data-test="value"]:{[class~="item"]:hover:bg-blue-500}'
+    )
+  ).toBe(
+    '[data-custom]:hover:border-dashed [data-test="value"]:[class~="item"]:hover:bg-blue-500'
+  )
+  expect(
+    tw(
+      '[data-state="open"]:focus-visible:{[&>p]:text-blue-600} [data-value="test"]:{[class~="item"]:hover:bg-blue-500}'
+    )
+  ).toBe(
+    '[data-state="open"]:focus-visible:[&>p]:text-blue-600 [data-value="test"]:[class~="item"]:hover:bg-blue-500'
+  )
+  expect(
+    tw(
+      '[class^="header-"]:hover:{[&>&]:mt-5} [data-action="submit"]:focus-visible:{[&>button]:bg-gray-800}'
+    )
+  ).toBe(
+    '[class^="header-"]:hover:[&>&]:mt-5 [data-action="submit"]:focus-visible:[&>button]:bg-gray-800'
+  )
+  expect(
+    tw(
+      '[class*=icon]:hover:{w-8 h-8} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200}'
+    )
+  ).toBe(
+    '[class*=icon]:hover:w-8 [class*=icon]:hover:h-8 [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200'
+  )
+  expect(
+    tw(
+      '[class~="btn"]:focus-visible:{[&>span]:text-yellow-500} [data-state="open"]:focus-visible:{[&>p]:text-blue-600}'
+    )
+  ).toBe(
+    '[class~="btn"]:focus-visible:[&>span]:text-yellow-500 [data-state="open"]:focus-visible:[&>p]:text-blue-600'
+  )
+  expect(
+    tw(
+      '[data-test="value"]:{bg-red-500 text-white} [class*=icon]:focus:{w-8 h-8}'
+    )
+  ).toBe(
+    '[data-test="value"]:bg-red-500 [data-test="value"]:text-white [class*=icon]:focus:w-8 [class*=icon]:focus:h-8'
+  )
+  expect(
+    tw(
+      '[class|="btn"]:focus:{outline-none ring-2 ring-blue-400} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200}'
+    )
+  ).toBe(
+    '[class|="btn"]:focus:outline-none [class|="btn"]:focus:ring-2 [class|="btn"]:focus:ring-blue-400 [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200'
+  )
+  expect(
+    tw(
+      '[data-custom]:hover:{border-dashed} [data-value="true"]:{bg-green-100 text-black}'
+    )
+  ).toBe(
+    '[data-custom]:hover:border-dashed [data-value="true"]:bg-green-100 [data-value="true"]:text-black'
+  )
+  expect(
+    tw(
+      '[data-test="value"]:{text-xl font-semibold} [data-item="nav"]:focus-visible:{[&>ul]:bg-blue-200}'
+    )
+  ).toBe(
+    '[data-test="value"]:text-xl [data-test="value"]:font-semibold [data-item="nav"]:focus-visible:[&>ul]:bg-blue-200'
+  )
+  expect(
+    tw(
+      '[class*=btn]:hover:{[&>span]:text-white} [data-attr="value"]:{[class~="item"]:hover:bg-blue-500}'
+    )
+  ).toBe(
+    '[class*=btn]:hover:[&>span]:text-white [data-attr="value"]:[class~="item"]:hover:bg-blue-500'
+  )
+  expect(
+    tw(
+      '[data-state="open"]:focus-visible:{[&>p]:text-blue-600} [class~="section"]:focus-visible:{[&>h1]:text-xl}'
+    )
+  ).toBe(
+    '[data-state="open"]:focus-visible:[&>p]:text-blue-600 [class~="section"]:focus-visible:[&>h1]:text-xl'
+  )
+  expect(
+    tw(
+      '[data-action="submit"]:focus-visible:{[&>button]:bg-gray-800} [class*=card]:hover:{[&>img]:rounded-full}'
+    )
+  ).toBe(
+    '[data-action="submit"]:focus-visible:[&>button]:bg-gray-800 [class*=card]:hover:[&>img]:rounded-full'
   )
 })

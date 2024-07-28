@@ -1,5 +1,5 @@
 console.clear()
-import tw from '.'
+import tw from '..'
 
 function test(fb: Function) {
   console.time('tw')

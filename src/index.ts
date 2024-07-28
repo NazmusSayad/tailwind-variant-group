@@ -1,32 +1,50 @@
-const tailwindVariantRegex =
-  /([\/\:\-\_a-z0-9]+|\[[\<\>\|\~\*\^\$\&\-\=\_a-z0-9]+\])+:\{.*\}/gim
+const tailwindVariantRegex = /[\S]+:\{[^}]+\}/gm
 
-function extractVariant(code: string) {
-  const [, prefix = '', value = ''] = code.match(/(.*)\{(.*)\}/)!
-
-  return value
-    .split(/ +/)
-    .map((v) => prefix + v)
+function joinPrefixAndValue(prefix: string, args: string[]) {
+  return args
+    .filter((a) => a)
+    .map((a) => prefix + a)
     .join(' ')
 }
 
-export function transform(code: string) {
-  return code.replace(tailwindVariantRegex, extractVariant)
+function extractMatchedVariant(matchedStr: string) {
+  const [, prefix = '', value = ''] = matchedStr.match(/(.*)\{(.*)\}/) ?? []
+  return joinPrefixAndValue(prefix, value.split(/ +/))
 }
 
-export function tw(...args: NestedArray) {
+function flatArray(args: Args) {
   const flatted = args.flat(Infinity)
-  const filteredArgs = flatted.filter((a) => {
+  return flatted.filter((a) => {
     return (
-      typeof a === 'string' ||
-      typeof a === 'number' ||
-      a instanceof String ||
-      a instanceof Number
+      a &&
+      (typeof a === 'string' ||
+        typeof a === 'number' ||
+        a instanceof String ||
+        a instanceof Number)
     )
-  })
-
-  return transform(filteredArgs.join(' '))
+  }) as string[]
 }
+
+function transform(code: string) {
+  return code.replace(tailwindVariantRegex, extractMatchedVariant)
+}
+
+function twGroup(v: string, ...args: [Args[number], ...Args]) {
+  return joinPrefixAndValue(
+    v.endsWith(':') ? v : v + ':',
+    flatArray(args).join(' ').split(' ')
+  )
+}
+
+function tw(...args: Args) {
+  return transform(flatArray(args).join(' '))
+}
+
+tw.g = twGroup
+tw.group = twGroup
+tw.transform = transform
 
 export default tw
-type NestedArray = (unknown | NestedArray)[]
+export { tw, twGroup, twGroup as twg, transform }
+
+type Args = (unknown | Args)[]
